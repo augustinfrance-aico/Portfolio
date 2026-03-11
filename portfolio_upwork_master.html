@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Augustin — AI Systems Architect & Automation Expert</title>
+<meta name="description" content="65 AI agents. 350k+ lines of code. Enterprise-grade automation systems. Zero manual intervention.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ========================= RESET & VARIABLES ========================= */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FAFBFE;
+  --white:#FFFFFF;
+  --surface:#F3F5FA;
+  --surface2:#EDF0F7;
+  --border:#DDE3EF;
+  --border2:#C8D1E3;
+  --text:#0F172A;
+  --text2:#334155;
+  --text3:#64748B;
+  --text4:#94A3B8;
+  --blue:#2563EB;
+  --blue2:#1D4ED8;
+  --blue-light:#EFF6FF;
+  --blue-glow:rgba(37,99,235,.12);
+  --indigo:#4F46E5;
+  --indigo-light:#EEF2FF;
+  --violet:#7C3AED;
+  --violet-light:#F5F3FF;
+  --emerald:#059669;
+  --emerald-light:#ECFDF5;
+  --amber:#D97706;
+  --amber-light:#FFFBEB;
+  --rose:#E11D48;
+  --rose-light:#FFF1F2;
+  --cyan:#0891B2;
+  --cyan-light:#ECFEFF;
+  --gold:#B8860B;
+  --radius:16px;
+  --radius-sm:10px;
+  --radius-xs:6px;
+  --shadow-sm:0 1px 3px rgba(15,23,42,.06);
+  --shadow:0 4px 16px rgba(15,23,42,.08);
+  --shadow-lg:0 12px 40px rgba(15,23,42,.12);
+  --shadow-xl:0 20px 60px rgba(15,23,42,.16);
+  --font:'Inter',system-ui,-apple-system,sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.65;font-size:15px;-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%;display:block}
+
+/* ========================= NAV ========================= */
+nav{
+  position:fixed;top:0;width:100%;z-index:100;
+  background:rgba(250,251,254,.92);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  padding:0 24px;
+}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px;color:var(--text)}
+.nav-logo .dot{width:10px;height:10px;border-radius:50%;background:var(--emerald);box-shadow:0 0 8px rgba(5,150,105,.5);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.nav-logo span{color:var(--text3);font-weight:400;font-size:13px}
+.nav-links{display:flex;gap:24px}
+.nav-links a{color:var(--text3);font-size:13px;font-weight:600;text-decoration:none;transition:.2s}
+.nav-links a:hover{color:var(--blue)}
+.nav-cta{padding:8px 20px;background:var(--blue);color:#fff;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;transition:.2s;border:none;cursor:pointer}
+.nav-cta:hover{background:var(--blue2);text-decoration:none}
+
+/* ========================= LAYOUT ========================= */
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+section{padding:80px 0}
+.section-label{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);background:var(--blue-light);padding:6px 14px;border-radius:20px;margin-bottom:16px}
+.section-title{font-size:36px;font-weight:900;color:var(--text);line-height:1.15;letter-spacing:-.5px;margin-bottom:12px}
+.section-sub{font-size:16px;color:var(--text3);max-width:640px;line-height:1.7}
+
+/* ========================= HERO ========================= */
+.hero{padding:140px 0 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(37,99,235,.06) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-100px;left:-150px;width:400px;height:400px;background:radial-gradient(circle,rgba(124,58,237,.05) 0%,transparent 70%);pointer-events:none}
+.hero-inner{position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--border);border-radius:30px;padding:8px 20px 8px 12px;font-size:13px;font-weight:600;color:var(--text2);box-shadow:var(--shadow-sm);margin-bottom:28px}
+.hero-badge .live-dot{width:8px;height:8px;border-radius:50%;background:var(--emerald);animation:pulse 2s infinite}
+.hero-title{font-size:clamp(36px,5vw,56px);font-weight:900;line-height:1.08;letter-spacing:-1.5px;color:var(--text);margin-bottom:20px;max-width:800px}
+.hero-title .grad{background:linear-gradient(135deg,var(--blue),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:18px;color:var(--text3);max-width:600px;line-height:1.7;margin-bottom:36px}
+.hero-stats{display:flex;gap:40px;flex-wrap:wrap;margin-bottom:40px}
+.hero-stat{text-align:left}
+.hero-stat .num{font-size:36px;font-weight:900;color:var(--text);line-height:1;letter-spacing:-1px}
+.hero-stat .num .accent{color:var(--blue)}
+.hero-stat .label{font-size:12px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-top:4px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--blue);color:#fff;border-radius:var(--radius-sm);font-size:15px;font-weight:700;text-decoration:none;transition:.2s;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(37,99,235,.3)}
+.btn-primary:hover{background:var(--blue2);transform:translateY(-1px);box-shadow:0 6px 20px rgba(37,99,235,.35);text-decoration:none}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--white);color:var(--text);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:15px;font-weight:700;text-decoration:none;transition:.2s;cursor:pointer}
+.btn-secondary:hover{border-color:var(--blue);color:var(--blue);text-decoration:none}
+
+/* ========================= SOCIAL PROOF BAR ========================= */
+.proof-bar{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:24px 0}
+.proof-inner{display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap}
+.proof-item{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--text3)}
+.proof-icon{font-size:20px}
+.proof-val{font-weight:800;color:var(--text)}
+
+/* ========================= CARDS & GRIDS ========================= */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+
+.card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow-sm);transition:.2s;position:relative;overflow:hidden}
+.card:hover{box-shadow:var(--shadow);border-color:var(--border2)}
+.card-sm{padding:20px}
+.card-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px}
+.card-title{font-size:17px;font-weight:800;color:var(--text);margin-bottom:6px}
+.card-desc{font-size:14px;color:var(--text3);line-height:1.6}
+
+/* ========================= CASE STUDIES ========================= */
+.case{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);transition:.2s}
+.case:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.case-visual{padding:32px;position:relative;min-height:220px;display:flex;align-items:center;justify-content:center}
+.case-body{padding:28px 32px}
+.case-tag{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;padding:4px 10px;border-radius:20px;margin-bottom:12px}
+.case-title{font-size:22px;font-weight:800;color:var(--text);margin-bottom:8px;line-height:1.3}
+.case-desc{font-size:14px;color:var(--text3);line-height:1.7;margin-bottom:16px}
+.case-metrics{display:flex;gap:24px;flex-wrap:wrap}
+.case-metric{text-align:left}
+.case-metric .val{font-size:20px;font-weight:900;color:var(--text)}
+.case-metric .lbl{font-size:11px;font-weight:600;color:var(--text4);text-transform:uppercase;letter-spacing:.6px}
+
+/* ========================= WORKFLOW DIAGRAM ========================= */
+.wf-diagram{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow-sm)}
+.wf-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center}
+.wf-node{padding:10px 18px;border-radius:var(--radius-sm);font-size:13px;font-weight:700;border:2px solid;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.wf-arrow{font-size:18px;color:var(--text4)}
+.wf-n-trigger{background:#FEF3C7;border-color:#F59E0B;color:#92400E}
+.wf-n-process{background:var(--blue-light);border-color:var(--blue);color:var(--blue2)}
+.wf-n-ai{background:var(--violet-light);border-color:var(--violet);color:#5B21B6}
+.wf-n-output{background:var(--emerald-light);border-color:var(--emerald);color:#065F46}
+.wf-n-data{background:var(--cyan-light);border-color:var(--cyan);color:#155E75}
+
+/* ========================= EXCALIDRAW-STYLE DIAGRAMS ========================= */
+.excalidraw-box{background:var(--white);border:2px solid var(--border);border-radius:var(--radius);padding:40px;position:relative;overflow:hidden}
+.excalidraw-box::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 19px,rgba(148,163,184,.07) 19px,rgba(148,163,184,.07) 20px),repeating-linear-gradient(90deg,transparent,transparent 19px,rgba(148,163,184,.07) 19px,rgba(148,163,184,.07) 20px);pointer-events:none}
+
+/* ========================= AGENT SYSTEM ========================= */
+.agent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px}
+.agent-chip{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-xs);padding:8px 10px;text-align:center;font-size:11px;font-weight:700;color:var(--text2);transition:.2s}
+.agent-chip:hover{background:var(--blue-light);border-color:var(--blue);color:var(--blue)}
+.agent-chip .emoji{font-size:16px;display:block;margin-bottom:2px}
+
+.pole-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px;position:relative;overflow:hidden}
+.pole-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.pole-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;padding:4px 10px;border-radius:20px;margin-bottom:10px}
+
+/* ========================= STATS ROW ========================= */
+.stats-row{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin:40px 0}
+.stat-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+.stat-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px}
+.stat-num{font-size:32px;font-weight:900;line-height:1;margin-bottom:4px;letter-spacing:-1px}
+.stat-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text3)}
+
+/* ========================= GOVERNANCE ========================= */
+.gov-chain{display:flex;align-items:center;gap:0;justify-content:center;flex-wrap:wrap;margin:24px 0}
+.gov-node{padding:12px 20px;border-radius:var(--radius-sm);font-size:13px;font-weight:700;text-align:center;min-width:120px;border:2px solid;position:relative}
+.gov-arrow{width:40px;text-align:center;font-size:20px;color:var(--text4)}
+
+/* ========================= SKILLS TABLE ========================= */
+.skill-table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.skill-table th{background:var(--surface);padding:12px 16px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text3);text-align:left;border-bottom:1px solid var(--border)}
+.skill-table td{padding:12px 16px;font-size:14px;color:var(--text2);border-bottom:1px solid var(--border)}
+.skill-table tr:last-child td{border-bottom:none}
+.skill-bar{height:8px;background:var(--surface);border-radius:4px;overflow:hidden}
+.skill-fill{height:100%;border-radius:4px;transition:width .6s}
+
+/* ========================= TESTIMONIAL ========================= */
+.testimonial{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:32px;position:relative}
+.testimonial::before{content:'"';font-size:80px;font-weight:900;color:var(--blue-light);position:absolute;top:10px;left:24px;line-height:1}
+.testimonial-text{font-size:16px;color:var(--text2);line-height:1.8;font-style:italic;position:relative;z-index:1;padding-top:20px}
+.testimonial-author{display:flex;align-items:center;gap:12px;margin-top:16px;position:relative;z-index:1}
+.testimonial-name{font-size:14px;font-weight:700;color:var(--text)}
+.testimonial-role{font-size:12px;color:var(--text3)}
+
+/* ========================= EXPERIENCE TIMELINE ========================= */
+.timeline{position:relative;padding-left:32px}
+.timeline::before{content:'';position:absolute;left:11px;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,var(--blue),var(--violet),var(--emerald))}
+.tl-item{position:relative;margin-bottom:32px}
+.tl-item::before{content:'';position:absolute;left:-32px;top:6px;width:12px;height:12px;border-radius:50%;border:3px solid var(--blue);background:var(--white);z-index:1}
+.tl-date{font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px}
+.tl-title{font-size:17px;font-weight:800;color:var(--text);margin-bottom:4px}
+.tl-desc{font-size:14px;color:var(--text3);line-height:1.6}
+
+/* ========================= PRICING / CTA ========================= */
+.cta-section{background:linear-gradient(135deg,#1E293B 0%,#0F172A 100%);border-radius:24px;padding:60px;text-align:center;color:#fff;margin:40px 0;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;top:-100px;right:-100px;width:300px;height:300px;background:radial-gradient(circle,rgba(37,99,235,.2),transparent 70%);pointer-events:none}
+.cta-section::after{content:'';position:absolute;bottom:-80px;left:-80px;width:250px;height:250px;background:radial-gradient(circle,rgba(124,58,237,.15),transparent 70%);pointer-events:none}
+.cta-title{font-size:32px;font-weight:900;margin-bottom:12px;position:relative;z-index:1}
+.cta-sub{font-size:16px;color:rgba(255,255,255,.7);margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto;position:relative;z-index:1}
+.btn-white{display:inline-flex;align-items:center;gap:8px;padding:16px 32px;background:#fff;color:var(--text);border-radius:var(--radius-sm);font-size:16px;font-weight:700;text-decoration:none;transition:.2s;border:none;cursor:pointer;box-shadow:var(--shadow)}
+.btn-white:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);text-decoration:none}
+
+/* ========================= FOOTER ========================= */
+footer{padding:40px 0;border-top:1px solid var(--border);text-align:center}
+footer p{font-size:13px;color:var(--text4)}
+
+/* ========================= RESPONSIVE ========================= */
+@media(max-width:768px){
+  .grid-2,.grid-3,.grid-4,.grid-5{grid-template-columns:1fr}
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .hero-stats{gap:24px}
+  .nav-links{display:none}
+  .gov-chain{flex-direction:column}
+  .gov-arrow{transform:rotate(90deg);width:auto}
+  .wf-row{flex-direction:column}
+  .wf-arrow{transform:rotate(90deg)}
+  .proof-inner{gap:24px}
+}
+
+/* ========================= ANIMATIONS ========================= */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.float{animation:float 4s ease-in-out infinite}
+</style>
+</head>
+<body>
+
+<!-- ========================= NAV ========================= -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="dot"></div>
+      Augustin <span>AI Systems Architect</span>
+    </div>
+    <div class="nav-links">
+      <a href="#systems">Systems</a>
+      <a href="#cases">Case Studies</a>
+      <a href="#agents">Agent Building</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+    </div>
+    <a href="https://www.upwork.com/freelancers/augustin" class="nav-cta">Hire Me →</a>
+  </div>
+</nav>
+
+<!-- ========================= HERO ========================= -->
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-badge">
+      <span class="live-dot"></span>
+      Available now — 4 production systems running 24/7
+    </div>
+    <h1 class="hero-title">
+      I build <span class="grad">autonomous AI systems</span> that run while you sleep.
+    </h1>
+    <p class="hero-sub">
+      Automation architect running two AI buildings — Cooper (65 agents) and Morpheus (50 agents) — totaling 115 specialized agents, 350k+ lines of production code, and a track record of delivering enterprise-grade workflows with zero manual intervention.
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="num">350<span class="accent">k+</span></div>
+        <div class="label">Lines of Code</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">115</div>
+        <div class="label">AI Agents (2 Buildings)</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">50<span class="accent">+</span></div>
+        <div class="label">Workflows Shipped</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">24<span class="accent">/7</span></div>
+        <div class="label">Production Uptime</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">$720<span class="accent">k</span></div>
+        <div class="label">Sales Generated (2 yrs)</div>
+      </div>
+    </div>
+    <div class="hero-actions">
+      <a href="#cases" class="btn-primary">View My Work →</a>
+      <a href="#contact" class="btn-secondary">Let's Talk</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= SOCIAL PROOF BAR ========================= -->
+<div class="proof-bar">
+  <div class="proof-inner">
+    <div class="proof-item"><span class="proof-icon">🏢</span> <span class="proof-val">$79M</span> agency served</div>
+    <div class="proof-item"><span class="proof-icon">🤖</span> <span class="proof-val">115</span> agents across 2 AI buildings</div>
+    <div class="proof-item"><span class="proof-icon">⚡</span> <span class="proof-val">50+</span> n8n workflows live</div>
+    <div class="proof-item"><span class="proof-icon">🔄</span> <span class="proof-val">0</span> manual intervention</div>
+    <div class="proof-item"><span class="proof-icon">💰</span> <span class="proof-val">$0</span> infrastructure cost</div>
+  </div>
+</div>
+
+<!-- ========================= WHAT I BUILD ========================= -->
+<section id="systems">
+  <div class="container">
+    <div class="section-label">⚡ Core Expertise</div>
+    <h2 class="section-title">I don't build features.<br>I build systems that scale.</h2>
+    <p class="section-sub" style="margin-bottom:40px">Every project I deliver is designed to run autonomously — with built-in error recovery, intelligent routing, and zero-maintenance architecture.</p>
+
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-icon" style="background:var(--blue-light)">🔄</div>
+        <div class="card-title">Workflow Automation</div>
+        <div class="card-desc">n8n, Make.com, Zapier — 50+ production workflows. From simple webhooks to complex multi-step AI pipelines processing thousands of items daily.</div>
+        <div style="margin-top:16px;display:flex;gap:6px;flex-wrap:wrap">
+          <span style="background:var(--surface);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;color:var(--text3)">n8n</span>
+          <span style="background:var(--surface);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;color:var(--text3)">Make.com</span>
+          <span style="background:var(--surface);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;color:var(--text3)">Zapier</span>
+          <span style="background:var(--surface);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;color:var(--text3)">Webhooks</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--violet-light)">🧠</div>
+        <div class="card-title">AI Integration</div>
+        <div class="card-desc">Claude, GPT, Groq, Gemini — multi-model cascade with 6 fallback layers. Custom prompt engineering, RAG pipelines, and autonomous AI agents.</div>
+        <div style="margin-top:16px;display:flex;gap:6px;flex-wrap:wrap">
+          <span style="background:var(--surface);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;color:var(--text3)">Claude API</span>
+          <span style="background:var(--surface);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;color:var(--text3)">GPT-4</span>
+          <span style="background:var(--surface);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;color:var(--text3)">Groq</span>
+          <span style="background:var(--surface);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;color:var(--text3)">RAG</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--emerald-light)">🤖</div>
+        <div class="card-title">Bot Development</div>
+        <div class="card-desc">Telegram, WhatsApp, Slack bots — with persistent memory, voice synthesis, multi-language support, and modular architecture (71 production modules).</div>
+        <div style="margin-top:16px;display:flex;gap:6px;flex-wrap:wrap">
+          <span style="background:var(--surface);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;color:var(--text3)">Telegram</span>
+          <span style="background:var(--surface);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;color:var(--text3)">WhatsApp</span>
+          <span style="background:var(--surface);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;color:var(--text3)">Python Async</span>
+          <span style="background:var(--surface);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;color:var(--text3)">Voice AI</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--amber-light)">📊</div>
+        <div class="card-title">Data Pipelines & ETL</div>
+        <div class="card-desc">Automated data extraction, transformation and loading. Google Sheets, Airtable, Supabase PostgreSQL. Real-time dashboards and reporting.</div>
+        <div style="margin-top:16px;display:flex;gap:6px;flex-wrap:wrap">
+          <span style="background:var(--surface);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;color:var(--text3)">Supabase</span>
+          <span style="background:var(--surface);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;color:var(--text3)">Airtable</span>
+          <span style="background:var(--surface);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;color:var(--text3)">PostgreSQL</span>
+          <span style="background:var(--surface);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;color:var(--text3)">REST APIs</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--rose-light)">📧</div>
+        <div class="card-title">Email & CRM Automation</div>
+        <div class="card-desc">Mailchimp, SendGrid, HubSpot integration. Multi-step nurture sequences, conditional journeys, segmentation, and automated lead scoring.</div>
+        <div style="margin-top:16px;display:flex;gap:6px;flex-wrap:wrap">
+          <span style="background:var(--surface);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;color:var(--text3)">Mailchimp</span>
+          <span style="background:var(--surface);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;color:var(--text3)">SendGrid</span>
+          <span style="background:var(--surface);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;color:var(--text3)">HubSpot</span>
+          <span style="background:var(--surface);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;color:var(--text3)">GoHighLevel</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--cyan-light)">⚖️</div>
+        <div class="card-title">Legal Tech & Compliance</div>
+        <div class="card-desc">Automated contract generation, compliance monitoring, document analysis with AI. Experience in regulated environments with audit trails.</div>
+        <div style="margin-top:16px;display:flex;gap:6px;flex-wrap:wrap">
+          <span style="background:var(--surface);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;color:var(--text3)">DocuSign</span>
+          <span style="background:var(--surface);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;color:var(--text3)">PDF Gen</span>
+          <span style="background:var(--surface);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;color:var(--text3)">Audit Trails</span>
+          <span style="background:var(--surface);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;color:var(--text3)">GDPR</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= WORKFLOW SHOWCASE ========================= -->
+<section style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <div class="section-label">🔧 Live Workflow Examples</div>
+    <h2 class="section-title">Real workflows, running in production.</h2>
+    <p class="section-sub" style="margin-bottom:40px">These are not demos — they process real data, every day, for real clients.</p>
+
+    <!-- WF1: News Automation -->
+    <div class="wf-diagram" style="margin-bottom:24px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+        <span style="font-size:18px">📰</span>
+        <div>
+          <div style="font-size:15px;font-weight:800;color:var(--text)">WF-01 — Automated News Publishing (7 articles/day)</div>
+          <div style="font-size:12px;color:var(--text3)">Client: Eastern European news platform · 3 languages · 19 nodes · 0 manual steps</div>
+        </div>
+      </div>
+      <div class="wf-row">
+        <div class="wf-node wf-n-trigger">⏱ Schedule<br><span style="font-size:10px;font-weight:500">6x/day</span></div>
+        <div class="wf-arrow">→</div>
+        <div class="wf-node wf-n-data">📋 Google Sheets<br><span style="font-size:10px;font-weight:500">Source articles</span></div>
+        <div class="wf-arrow">→</div>
+        <div class="wf-node wf-n-process">🔄 Normalize Keys<br><span style="font-size:10px;font-weight:500">Cyrillic fix</span></div>
+        <div class="wf-arrow">→</div>
+        <div class="wf-node wf-n-ai">🧠 OpenAI<br><span style="font-size:10px;font-weight:500">Translate 3 langs</span></div>
+        <div class="wf-arrow">→</div>
+        <div class="wf-node wf-n-process">🌐 API POST<br><span style="font-size:10px;font-weight:500">Publish to site</span></div>
+        <div class="wf-arrow">→</div>
+        <div class="wf-node wf-n-output">✅ Telegram<br><span style="font-size:10px;font-weight:500">Notify channels</span></div>
+      </div>
+    </div>
+
+    <!-- WF2: Meta Ads Reporting -->
+    <div class="wf-diagram" style="margin-bottom:24px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+        <span style="font-size:18px">📊</span>
+        <div>
+          <div style="font-size:15px;font-weight:800;color:var(--text)">WF-02 — AI-Powered Meta Ads Reporting</div>
+          <div style="font-size:12px;color:var(--text3)">Client: $79M Ad Agency · Daily + Weekly + Monthly cadences · Claude AI analysis</div>
+        </div>
+      </div>
+      <div class="wf-row">
+        <div class="wf-node wf-n-trigger">⏱ Multi-Schedule<br><span style="font-size:10px;font-weight:500">D / W / M</span></div>
+        <div class="wf-arrow">→</div>
+        <div class="wf-node wf-n-data">📈 Meta Ads API<br><span style="font-size:10px;font-weight:500">Pull campaigns</span></div>
+        <div class="wf-arrow">→</div>
+        <div class="wf-node wf-n-ai">🧠 Claude AI<br><span style="font-size:10px;font-weight:500">Analyze + insights</span></div>
+        <div class="wf-arrow">→</div>
+        <div class="wf-node wf-n-process">📄 HTML Format<br><span style="font-size:10px;font-weight:500">Email template</span></div>
+        <div class="wf-arrow">→</div>
+        <div class="wf-node wf-n-output">📧 Gmail<br><span style="font-size:10px;font-weight:500">Send report</span></div>
+      </div>
+    </div>
+
+    <!-- WF3: Lead Gen -->
+    <div class="wf-diagram" style="margin-bottom:24px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+        <span style="font-size:18px">🎯</span>
+        <div>
+          <div style="font-size:15px;font-weight:800;color:var(--text)">WF-03 — Lead Generation + Cold Email Sequence</div>
+          <div style="font-size:12px;color:var(--text3)">Multi-step outreach · AI personalization · Follow-up automation · Lead scoring</div>
+        </div>
+      </div>
+      <div class="wf-row">
+        <div class="wf-node wf-n-trigger">🔍 Hunter.io<br><span style="font-size:10px;font-weight:500">Find leads</span></div>
+        <div class="wf-arrow">→</div>
+        <div class="wf-node wf-n-ai">🧠 AI Score<br><span style="font-size:10px;font-weight:500">Qualify + rank</span></div>
+        <div class="wf-arrow">→</div>
+        <div class="wf-node wf-n-process">✍️ Personalize<br><span style="font-size:10px;font-weight:500">AI cold email</span></div>
+        <div class="wf-arrow">→</div>
+        <div class="wf-node wf-n-output">📧 Brevo<br><span style="font-size:10px;font-weight:500">Send sequence</span></div>
+        <div class="wf-arrow">→</div>
+        <div class="wf-node wf-n-data">📋 CRM<br><span style="font-size:10px;font-weight:500">Track + follow</span></div>
+      </div>
+    </div>
+
+    <!-- WF4: Accounting AI -->
+    <div class="wf-diagram">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+        <span style="font-size:18px">🧾</span>
+        <div>
+          <div style="font-size:15px;font-weight:800;color:var(--text)">WF-04 — AI Accounting Document Processing</div>
+          <div style="font-size:12px;color:var(--text3)">Make.com · 3 countries · 7 document types · Regional compliance · Auto VAT calculation</div>
+        </div>
+      </div>
+      <div class="wf-row">
+        <div class="wf-node wf-n-trigger">📁 Dropbox<br><span style="font-size:10px;font-weight:500">New document</span></div>
+        <div class="wf-arrow">→</div>
+        <div class="wf-node wf-n-ai">🧠 Claude<br><span style="font-size:10px;font-weight:500">Parse + classify</span></div>
+        <div class="wf-arrow">→</div>
+        <div class="wf-node wf-n-process">📊 Tax Calc<br><span style="font-size:10px;font-weight:500">3-country rules</span></div>
+        <div class="wf-arrow">→</div>
+        <div class="wf-node wf-n-data">🗄 Airtable<br><span style="font-size:10px;font-weight:500">Store records</span></div>
+        <div class="wf-arrow">→</div>
+        <div class="wf-node wf-n-output">📤 Sage Export<br><span style="font-size:10px;font-weight:500">Accounting SW</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= CASE STUDIES ========================= -->
+<section id="cases">
+  <div class="container">
+    <div class="section-label">📁 Case Studies</div>
+    <h2 class="section-title">Systems in production, results delivered.</h2>
+    <p class="section-sub" style="margin-bottom:40px">Every project below is live, serving real clients, generating real value.</p>
+
+    <div class="grid-2" style="margin-bottom:24px">
+      <!-- Case 1: News Automation -->
+      <div class="case">
+        <div class="case-visual" style="background:linear-gradient(135deg,#1E40AF 0%,#3B82F6 100%)">
+          <div style="text-align:center;color:#fff">
+            <div style="font-size:56px;margin-bottom:12px">📰</div>
+            <div style="font-size:13px;font-weight:700;opacity:.8;text-transform:uppercase;letter-spacing:1px">News Automation Pipeline</div>
+            <div style="font-size:28px;font-weight:900;margin-top:8px">7 Articles/Day</div>
+            <div style="font-size:13px;opacity:.7;margin-top:4px">3 Languages · 0 Manual Steps</div>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-tag" style="background:var(--blue-light);color:var(--blue)">n8n · OpenAI · Telegram</div>
+          <div class="case-title">Full-Stack News Automation — Eastern Europe</div>
+          <div class="case-desc">Built a complete pipeline publishing 7 news articles daily in 3 languages. Google Sheets source → n8n scheduler (6x/day) → AI translation → API publishing → Telegram notifications. Zero human intervention since deployment.</div>
+          <div class="case-metrics">
+            <div class="case-metric"><div class="val" style="color:var(--blue)">19</div><div class="lbl">Active Nodes</div></div>
+            <div class="case-metric"><div class="val" style="color:var(--emerald)">100%</div><div class="lbl">Automated</div></div>
+            <div class="case-metric"><div class="val" style="color:var(--violet)">6x</div><div class="lbl">Daily Runs</div></div>
+            <div class="case-metric"><div class="val" style="color:var(--amber)">3</div><div class="lbl">Languages</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 2: $79M Agency -->
+      <div class="case">
+        <div class="case-visual" style="background:linear-gradient(135deg,#5B21B6 0%,#7C3AED 100%)">
+          <div style="text-align:center;color:#fff">
+            <div style="font-size:56px;margin-bottom:12px">🏢</div>
+            <div style="font-size:13px;font-weight:700;opacity:.8;text-transform:uppercase;letter-spacing:1px">Enterprise Client Hub</div>
+            <div style="font-size:28px;font-weight:900;margin-top:8px">$79M Managed</div>
+            <div style="font-size:13px;opacity:.7;margin-top:4px">Meta + Google Ads Agency</div>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-tag" style="background:var(--violet-light);color:var(--violet)">React · Supabase · n8n · MCP</div>
+          <div class="case-title">Client Hub SaaS — Ads Agency ($79M)</div>
+          <div class="case-desc">Delivered a full Client Hub for a digital ads agency managing $79M in ad spend. 4 n8n workflows (automated reports, lead gen, creative alerts, anomaly detection), React frontend with Supabase, real-time dashboards, and MCP server integration.</div>
+          <div class="case-metrics">
+            <div class="case-metric"><div class="val" style="color:var(--violet)">4</div><div class="lbl">Workflows</div></div>
+            <div class="case-metric"><div class="val" style="color:var(--blue)">SaaS</div><div class="lbl">Platform</div></div>
+            <div class="case-metric"><div class="val" style="color:var(--emerald)">MCP</div><div class="lbl">Integration</div></div>
+            <div class="case-metric"><div class="val" style="color:var(--amber)">3</div><div class="lbl">Phases</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <!-- Case 3: Accounting AI -->
+      <div class="case">
+        <div class="case-visual" style="background:linear-gradient(135deg,#065F46 0%,#059669 100%)">
+          <div style="text-align:center;color:#fff">
+            <div style="font-size:56px;margin-bottom:12px">🧾</div>
+            <div style="font-size:13px;font-weight:700;opacity:.8;text-transform:uppercase;letter-spacing:1px">AI Accounting SaaS</div>
+            <div style="font-size:28px;font-weight:900;margin-top:8px">3 Countries</div>
+            <div style="font-size:13px;opacity:.7;margin-top:4px">Regional Compliance · AI Document Processing</div>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-tag" style="background:var(--emerald-light);color:var(--emerald)">Make.com · Claude AI · Airtable</div>
+          <div class="case-title">AI Accounting SaaS — Multi-Country Tax Automation</div>
+          <div class="case-desc">SaaS platform automating accounting for SMEs across 3 countries with different tax regimes. 3 Make.com scenarios (15 modules): document classification with Claude AI, automatic VAT calculation, and SME onboarding. Full regional compliance built-in.</div>
+          <div class="case-metrics">
+            <div class="case-metric"><div class="val" style="color:var(--emerald)">15</div><div class="lbl">Modules</div></div>
+            <div class="case-metric"><div class="val" style="color:var(--blue)">3</div><div class="lbl">Countries</div></div>
+            <div class="case-metric"><div class="val" style="color:var(--violet)">7</div><div class="lbl">Doc Types</div></div>
+            <div class="case-metric"><div class="val" style="color:var(--amber)">AI</div><div class="lbl">Powered</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 4: B2C Leads -->
+      <div class="case">
+        <div class="case-visual" style="background:linear-gradient(135deg,#92400E 0%,#D97706 100%)">
+          <div style="text-align:center;color:#fff">
+            <div style="font-size:56px;margin-bottom:12px">🎯</div>
+            <div style="font-size:13px;font-weight:700;opacity:.8;text-transform:uppercase;letter-spacing:1px">Lead Generation Pipeline</div>
+            <div style="font-size:28px;font-weight:900;margin-top:8px">300 Leads</div>
+            <div style="font-size:13px;opacity:.7;margin-top:4px">B2C · Qualified · Automated Outreach</div>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-tag" style="background:var(--amber-light);color:var(--amber)">Scraping · Email · CRM</div>
+          <div class="case-title">B2C Lead Pipeline — 300 Qualified Leads</div>
+          <div class="case-desc">Automated lead generation pipeline for a local services business: web scraping for qualified prospects, email enrichment, scoring, and automated outreach sequence. 300 leads generated and delivered with full contact details.</div>
+          <div class="case-metrics">
+            <div class="case-metric"><div class="val" style="color:var(--amber)">300</div><div class="lbl">Leads</div></div>
+            <div class="case-metric"><div class="val" style="color:var(--blue)">B2C</div><div class="lbl">Market</div></div>
+            <div class="case-metric"><div class="val" style="color:var(--emerald)">Auto</div><div class="lbl">Outreach</div></div>
+            <div class="case-metric"><div class="val" style="color:var(--violet)">CSV</div><div class="lbl">Delivered</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= AGENT SYSTEM — THE EMPIRE ========================= -->
+<section id="agents" style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <div class="section-label">🏛️ The Dual Building System</div>
+    <h2 class="section-title">115 agents. Two buildings.<br>One unified empire.</h2>
+    <p class="section-sub" style="margin-bottom:16px">This isn't a chatbot with plugins. It's two full civilizations of agents — <strong>Cooper Building</strong> (65 agents, strategy & creation) and <strong>Morpheus Building</strong> (50 agents, execution & deep analysis) — working in parallel with shared governance, delivering faster and better than any team.</p>
+
+    <!-- Dual Building Overview -->
+    <div class="grid-2" style="margin-bottom:24px">
+      <div class="card" style="border-top:4px solid var(--blue);text-align:center">
+        <div style="font-size:36px;margin-bottom:8px">🏢</div>
+        <div style="font-size:20px;font-weight:900;color:var(--text);margin-bottom:4px">Cooper Building</div>
+        <div style="font-size:32px;font-weight:900;color:var(--blue);margin-bottom:8px">65 Agents</div>
+        <div style="font-size:13px;color:var(--text3);line-height:1.6">Strategy, creation, governance, deployment. The headquarters — 8 specialized poles (P1-P8), Tri-Pole execution model, 7 meta-layers.</div>
+      </div>
+      <div class="card" style="border-top:4px solid var(--violet);text-align:center">
+        <div style="font-size:36px;margin-bottom:8px">🌌</div>
+        <div style="font-size:20px;font-weight:900;color:var(--text);margin-bottom:4px">Morpheus Building</div>
+        <div style="font-size:32px;font-weight:900;color:var(--violet);margin-bottom:8px">50 Agents</div>
+        <div style="font-size:13px;color:var(--text3);line-height:1.6">Deep analysis, audit, system hardening, night operations. The forge — autonomous execution, cross-building intelligence, continuous improvement.</div>
+      </div>
+    </div>
+
+    <!-- ARCHITECTURE DIAGRAM (Excalidraw-style) -->
+    <div class="excalidraw-box" style="margin-bottom:32px">
+      <div style="text-align:center;position:relative;z-index:1">
+        <div style="font-size:11px;font-weight:700;color:var(--text4);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:24px">System Architecture — Tri-Pôle Execution Model</div>
+
+        <!-- Top: APEX -->
+        <div style="display:inline-block;background:linear-gradient(135deg,#1E293B,#334155);color:#fff;padding:14px 28px;border-radius:12px;font-weight:800;font-size:15px;margin-bottom:8px;box-shadow:0 4px 20px rgba(15,23,42,.2)">
+          🦅 APEX — Vision & Arbitrage
+        </div>
+        <div style="font-size:24px;color:var(--text4);margin:8px 0">↓</div>
+
+        <!-- ROUTER -->
+        <div style="display:inline-block;background:var(--amber-light);border:2px solid var(--amber);color:#92400E;padding:10px 24px;border-radius:10px;font-weight:800;font-size:13px;margin-bottom:8px">
+          🎯 ROUTER — Intelligent Dispatch Engine
+        </div>
+        <div style="font-size:24px;color:var(--text4);margin:8px 0">↓</div>
+
+        <!-- Three Poles -->
+        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:16px">
+          <div style="background:var(--blue-light);border:2px solid var(--blue);border-radius:12px;padding:20px;flex:1;min-width:200px;max-width:280px">
+            <div style="font-size:13px;font-weight:800;color:var(--blue);margin-bottom:8px">🔍 RECON — 8 Agents</div>
+            <div style="font-size:12px;color:var(--text3);line-height:1.6">ATLAS · CIPHER · ECHO · VORTEX · SCOUT · PARSEC · BRIDGE · PRISM</div>
+            <div style="margin-top:8px;font-size:11px;font-weight:700;color:var(--blue)">Research · Analysis · Strategy</div>
+          </div>
+          <div style="background:var(--violet-light);border:2px solid var(--violet);border-radius:12px;padding:20px;flex:1;min-width:200px;max-width:280px">
+            <div style="font-size:13px;font-weight:800;color:var(--violet);margin-bottom:8px">⚒️ FORGE — 16 Agents</div>
+            <div style="font-size:12px;color:var(--text3);line-height:1.6">FORGE · SPARK · NOVA · CANVAS · WEAVE · STREAM · QUILL · RENDER + 8 more</div>
+            <div style="margin-top:8px;font-size:11px;font-weight:700;color:var(--violet)">Build · Create · Design</div>
+          </div>
+          <div style="background:var(--emerald-light);border:2px solid var(--emerald);border-radius:12px;padding:20px;flex:1;min-width:200px;max-width:280px">
+            <div style="font-size:13px;font-weight:800;color:var(--emerald);margin-bottom:8px">🚀 DEPLOY — 14 Agents</div>
+            <div style="font-size:12px;color:var(--text3);line-height:1.6">LAUNCH · BROKER · OPTIC · GUARD · SHADOW · METRIC · SURGE · CROWN + 6 more</div>
+            <div style="margin-top:8px;font-size:11px;font-weight:700;color:var(--emerald)">Ship · Sell · Deliver</div>
+          </div>
+        </div>
+
+        <!-- Feedback loop -->
+        <div style="display:inline-block;background:var(--surface);border:1px dashed var(--border2);border-radius:10px;padding:10px 20px;font-size:12px;font-weight:600;color:var(--text3)">
+          ♻️ Continuous feedback loop: DEPLOY insights → RECON analysis → FORGE iteration
+        </div>
+
+        <!-- Support layers -->
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:16px">
+          <div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:8px;padding:8px 14px;font-size:11px;font-weight:700;color:#92400E">🧬 R&D Lab — 7 agents</div>
+          <div style="background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;padding:8px 14px;font-size:11px;font-weight:700;color:#065F46">📚 Living Memory — 5 agents</div>
+          <div style="background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:8px 14px;font-size:11px;font-weight:700;color:#9F1239">🔒 Governance — 5 agents</div>
+          <div style="background:#EFF6FF;border:1px solid #BFDBFE;border-radius:8px;padding:8px 14px;font-size:11px;font-weight:700;color:#1E40AF">🏴‍☠️ Command Squad — 3 leaders</div>
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:11px;font-weight:700;color:var(--text3)">🌌 Stratosphere — 7 meta-agents</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Governance Chain -->
+    <div style="margin-bottom:32px">
+      <div style="font-size:13px;font-weight:800;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px">⚖️ Governance Chain — Every error produces a rule</div>
+      <div class="gov-chain">
+        <div class="gov-node" style="background:#FEF2F2;border-color:#E11D48;color:#9F1239">🚨<br>Incident</div>
+        <div class="gov-arrow">→</div>
+        <div class="gov-node" style="background:var(--surface);border-color:var(--text3);color:var(--text2)">🕴️<br>Auditor<br><span style="font-size:10px;font-weight:500">Silent analysis</span></div>
+        <div class="gov-arrow">→</div>
+        <div class="gov-node" style="background:#FFF7ED;border-color:var(--amber);color:#92400E">🔮<br>Oracle<br><span style="font-size:10px;font-weight:500">Final verdict</span></div>
+        <div class="gov-arrow">→</div>
+        <div class="gov-node" style="background:var(--indigo-light);border-color:var(--indigo);color:#3730A3">🦅<br>Apex<br><span style="font-size:10px;font-weight:500">Improve rule</span></div>
+        <div class="gov-arrow">→</div>
+        <div class="gov-node" style="background:var(--emerald-light);border-color:var(--emerald);color:#065F46">✅<br>New Rule<br><span style="font-size:10px;font-weight:500">System hardened</span></div>
+      </div>
+    </div>
+
+    <!-- Parallelism Patterns -->
+    <div style="margin-bottom:32px">
+      <div style="font-size:13px;font-weight:800;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px">⚡ Parallelism Patterns — How I work 5x faster</div>
+      <div class="grid-3">
+        <div class="card card-sm" style="border-top:3px solid var(--blue)">
+          <div style="font-size:20px;margin-bottom:8px">🔀</div>
+          <div class="card-title" style="font-size:15px">SCATTER</div>
+          <div class="card-desc" style="font-size:13px">Map → Execute → Reduce. Up to 5 agents work in parallel on sub-tasks, then results are fused. Used for audits and multi-source research.</div>
+        </div>
+        <div class="card card-sm" style="border-top:3px solid var(--violet)">
+          <div style="font-size:20px;margin-bottom:8px">🔗</div>
+          <div class="card-title" style="font-size:15px">PIPELINE</div>
+          <div class="card-desc" style="font-size:13px">Sequential handoffs with clean interfaces. Agent A → B → C, each building on the previous. Used for builds and structured creation.</div>
+        </div>
+        <div class="card card-sm" style="border-top:3px solid var(--emerald)">
+          <div style="font-size:20px;margin-bottom:8px">🗳</div>
+          <div class="card-title" style="font-size:15px">CONSENSUS</div>
+          <div class="card-desc" style="font-size:13px">3-5 agents deliberate from different angles, then the Arbiter decides. Anti-groupthink: a Challenger agent contests unanimous decisions.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Memory System -->
+    <div>
+      <div style="font-size:13px;font-weight:800;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px">🧠 Memory Architecture — Infinite context, zero degradation</div>
+      <div class="grid-3">
+        <div class="card card-sm" style="border-left:4px solid var(--blue)">
+          <div style="font-size:13px;font-weight:800;color:var(--blue);margin-bottom:6px">Working Memory</div>
+          <div style="font-size:13px;color:var(--text3);line-height:1.6">~2k tokens of active session context. Auto-managed — flushes when threshold exceeded. Always fast.</div>
+        </div>
+        <div class="card card-sm" style="border-left:4px solid var(--violet)">
+          <div style="font-size:13px;font-weight:800;color:var(--violet);margin-bottom:6px">Archival Memory</div>
+          <div style="font-size:13px;color:var(--text3);line-height:1.6">Compressed history of all decisions, sessions, and client interactions. Queryable — retrieves only what's relevant.</div>
+        </div>
+        <div class="card card-sm" style="border-left:4px solid var(--emerald)">
+          <div style="font-size:13px;font-weight:800;color:var(--emerald);margin-bottom:6px">Procedural Memory</div>
+          <div style="font-size:13px;color:var(--text3);line-height:1.6">Learned skills with confidence scores. Auto-consolidated from patterns. 3 identical outcomes = new procedure.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= KEY STATS ========================= -->
+<section>
+  <div class="container">
+    <div class="stats-row">
+      <div class="stat-card" style="--sc:var(--blue)">
+        <div class="stat-num" style="color:var(--blue)">350k+</div>
+        <div class="stat-label">Lines of Code</div>
+        <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--blue)"></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" style="color:var(--violet)">115</div>
+        <div class="stat-label">AI Agents (2 Buildings)</div>
+        <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--violet)"></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" style="color:var(--emerald)">71</div>
+        <div class="stat-label">Bot Modules</div>
+        <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--emerald)"></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" style="color:var(--amber)">50+</div>
+        <div class="stat-label">Workflows</div>
+        <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--amber)"></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" style="color:var(--rose)">24/7</div>
+        <div class="stat-label">Uptime</div>
+        <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--rose)"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= SKILLS & COMPETENCIES ========================= -->
+<section id="skills" style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <div class="section-label">🎯 Hard Skills</div>
+    <h2 class="section-title">Full-stack automation engineer.</h2>
+    <p class="section-sub" style="margin-bottom:40px">I work daily with these tools — not tutorials, production environments with real clients and real deadlines.</p>
+
+    <table class="skill-table" style="margin-bottom:32px">
+      <thead>
+        <tr>
+          <th style="width:30%">Skill</th>
+          <th style="width:25%">Tools</th>
+          <th style="width:20%">Proficiency</th>
+          <th style="width:25%">Proof</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-weight:700;color:var(--text)">⚡ Workflow Automation</td>
+          <td>n8n, Make.com, Zapier</td>
+          <td><div class="skill-bar"><div class="skill-fill" style="width:95%;background:var(--blue)"></div></div></td>
+          <td style="font-size:12px;color:var(--emerald);font-weight:600">50+ workflows in production</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;color:var(--text)">🧠 AI / LLM Integration</td>
+          <td>Claude, GPT, Groq, Gemini</td>
+          <td><div class="skill-bar"><div class="skill-fill" style="width:95%;background:var(--violet)"></div></div></td>
+          <td style="font-size:12px;color:var(--emerald);font-weight:600">6-model cascade system</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;color:var(--text)">🐍 Python Development</td>
+          <td>Async, APIs, Bots, ETL</td>
+          <td><div class="skill-bar"><div class="skill-fill" style="width:90%;background:var(--emerald)"></div></div></td>
+          <td style="font-size:12px;color:var(--emerald);font-weight:600">71 production modules</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;color:var(--text)">🤖 Bot Development</td>
+          <td>Telegram, WhatsApp, Slack</td>
+          <td><div class="skill-bar"><div class="skill-fill" style="width:92%;background:var(--amber)"></div></div></td>
+          <td style="font-size:12px;color:var(--emerald);font-weight:600">24/7 bot with 71 modules</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;color:var(--text)">📊 Data & Dashboards</td>
+          <td>Supabase, Airtable, Sheets</td>
+          <td><div class="skill-bar"><div class="skill-fill" style="width:88%;background:var(--cyan)"></div></div></td>
+          <td style="font-size:12px;color:var(--emerald);font-weight:600">Real-time KPI dashboards</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;color:var(--text)">🌐 API Integration</td>
+          <td>REST, GraphQL, Webhooks</td>
+          <td><div class="skill-bar"><div class="skill-fill" style="width:92%;background:var(--indigo)"></div></div></td>
+          <td style="font-size:12px;color:var(--emerald);font-weight:600">Meta, Telegram, ShipStation...</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;color:var(--text)">📧 Email Automation</td>
+          <td>Mailchimp, SendGrid, Brevo</td>
+          <td><div class="skill-bar"><div class="skill-fill" style="width:85%;background:var(--rose)"></div></div></td>
+          <td style="font-size:12px;color:var(--emerald);font-weight:600">39 email sequences shipped</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;color:var(--text)">☁️ Cloud & DevOps</td>
+          <td>Railway, Vercel, Docker, CI/CD</td>
+          <td><div class="skill-bar"><div class="skill-fill" style="width:85%;background:var(--text3)"></div></div></td>
+          <td style="font-size:12px;color:var(--emerald);font-weight:600">Auto-deploy from GitHub</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;color:var(--text)">🎨 Frontend & UI</td>
+          <td>React, HTML/JS, Three.js</td>
+          <td><div class="skill-bar"><div class="skill-fill" style="width:82%;background:var(--blue)"></div></div></td>
+          <td style="font-size:12px;color:var(--emerald);font-weight:600">32 HTML portfolios built</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;color:var(--text)">💼 Sales & Business Dev</td>
+          <td>CRM, Outreach, Negotiation</td>
+          <td><div class="skill-bar"><div class="skill-fill" style="width:90%;background:var(--amber)"></div></div></td>
+          <td style="font-size:12px;color:var(--emerald);font-weight:600">$720K generated in 2 years</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Tool Icons Grid -->
+    <div style="font-size:13px;font-weight:800;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px">🛠 Tools I Use Daily</div>
+    <div class="grid-5" style="margin-bottom:20px">
+      <div class="card card-sm" style="text-align:center;padding:16px">
+        <div style="font-size:28px;margin-bottom:6px">⚡</div>
+        <div style="font-size:12px;font-weight:800;color:var(--text)">n8n</div>
+        <div style="font-size:10px;color:var(--text4)">Primary</div>
+      </div>
+      <div class="card card-sm" style="text-align:center;padding:16px">
+        <div style="font-size:28px;margin-bottom:6px">🔧</div>
+        <div style="font-size:12px;font-weight:800;color:var(--text)">Make.com</div>
+        <div style="font-size:10px;color:var(--text4)">Advanced</div>
+      </div>
+      <div class="card card-sm" style="text-align:center;padding:16px">
+        <div style="font-size:28px;margin-bottom:6px">🧠</div>
+        <div style="font-size:12px;font-weight:800;color:var(--text)">Claude API</div>
+        <div style="font-size:10px;color:var(--text4)">Primary AI</div>
+      </div>
+      <div class="card card-sm" style="text-align:center;padding:16px">
+        <div style="font-size:28px;margin-bottom:6px">🐍</div>
+        <div style="font-size:12px;font-weight:800;color:var(--text)">Python</div>
+        <div style="font-size:10px;color:var(--text4)">3.14 Async</div>
+      </div>
+      <div class="card card-sm" style="text-align:center;padding:16px">
+        <div style="font-size:28px;margin-bottom:6px">🚀</div>
+        <div style="font-size:12px;font-weight:800;color:var(--text)">Railway</div>
+        <div style="font-size:10px;color:var(--text4)">Deploy</div>
+      </div>
+      <div class="card card-sm" style="text-align:center;padding:16px">
+        <div style="font-size:28px;margin-bottom:6px">💬</div>
+        <div style="font-size:12px;font-weight:800;color:var(--text)">Telegram</div>
+        <div style="font-size:10px;color:var(--text4)">Bot API</div>
+      </div>
+      <div class="card card-sm" style="text-align:center;padding:16px">
+        <div style="font-size:28px;margin-bottom:6px">🗄</div>
+        <div style="font-size:12px;font-weight:800;color:var(--text)">Supabase</div>
+        <div style="font-size:10px;color:var(--text4)">PostgreSQL</div>
+      </div>
+      <div class="card card-sm" style="text-align:center;padding:16px">
+        <div style="font-size:28px;margin-bottom:6px">📊</div>
+        <div style="font-size:12px;font-weight:800;color:var(--text)">Airtable</div>
+        <div style="font-size:10px;color:var(--text4)">Data Layer</div>
+      </div>
+      <div class="card card-sm" style="text-align:center;padding:16px">
+        <div style="font-size:28px;margin-bottom:6px">📧</div>
+        <div style="font-size:12px;font-weight:800;color:var(--text)">Mailchimp</div>
+        <div style="font-size:10px;color:var(--text4)">Email Auto</div>
+      </div>
+      <div class="card card-sm" style="text-align:center;padding:16px">
+        <div style="font-size:28px;margin-bottom:6px">⚛️</div>
+        <div style="font-size:12px;font-weight:800;color:var(--text)">React</div>
+        <div style="font-size:10px;color:var(--text4)">TypeScript</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= EXPERIENCE TIMELINE ========================= -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label">📌 Track Record</div>
+    <h2 class="section-title">From $720K sales to AI systems.</h2>
+    <p class="section-sub" style="margin-bottom:40px">I understand business because I've done business. Every system I build is designed to generate revenue, not just execute code.</p>
+
+    <div class="grid-2">
+      <div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-date">2026 — Present</div>
+            <div class="tl-title">AI Systems Architect & Automation Expert</div>
+            <div class="tl-desc">Building autonomous AI systems for clients worldwide. 65 specialized agents, 350k+ lines of code, 50+ production workflows. Serving clients across 4 continents — Europe, Africa, North America, and Asia-Pacific.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">2024 — 2026</div>
+            <div class="tl-title">Founder — Sly Society (AI Agent Framework)</div>
+            <div class="tl-desc">Designed and built a complete autonomous agent civilization: multi-model AI cascade, governance protocols, parallelism patterns, episodic-procedural memory system. 71 modules in production.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">2022 — 2024</div>
+            <div class="tl-title">Sales Executive — Legal Tech</div>
+            <div class="tl-desc">Generated <strong>$720,000 in revenue over 2 years</strong> in the legal technology sector. B2B sales cycles, enterprise deal management, CRM optimization. Learned firsthand what businesses actually need from technology.</div>
+          </div>
+          <div class="tl-item" style="margin-bottom:0">
+            <div class="tl-date">2020 — 2022</div>
+            <div class="tl-title">Business Development & Automation</div>
+            <div class="tl-desc">Early automation projects: CRM workflows, lead generation systems, email sequences. Built the foundation for understanding how technology amplifies business outcomes.</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <!-- Testimonial -->
+        <div class="testimonial" style="margin-bottom:24px">
+          <div class="testimonial-text">Augustin delivered 4 complete n8n workflows for our agency — automated reporting, lead generation, creative alerts, and anomaly detection. The quality of work exceeded our expectations. He understands both the technical side and the business side.</div>
+          <div class="testimonial-author">
+            <div style="width:40px;height:40px;border-radius:50%;background:var(--violet-light);display:flex;align-items:center;justify-content:center;font-size:16px">🏢</div>
+            <div>
+              <div class="testimonial-name">Digital Ads Agency Client</div>
+              <div class="testimonial-role">$79M in managed ad spend · 4 workflows delivered</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Differentiator -->
+        <div class="card" style="border-left:4px solid var(--blue)">
+          <div style="font-size:15px;font-weight:800;color:var(--text);margin-bottom:12px">What makes me different</div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;gap:10px;align-items:flex-start">
+              <span style="color:var(--blue);font-weight:800;font-size:16px;flex-shrink:0">01</span>
+              <div style="font-size:14px;color:var(--text2);line-height:1.6"><strong>I don't freelance — I architect systems.</strong> Every deliverable is designed to run 24/7 without me.</div>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start">
+              <span style="color:var(--blue);font-weight:800;font-size:16px;flex-shrink:0">02</span>
+              <div style="font-size:14px;color:var(--text2);line-height:1.6"><strong>115 agents across 2 buildings work behind the scenes.</strong> Parallel execution means I ship 5x faster with built-in quality checks.</div>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start">
+              <span style="color:var(--blue);font-weight:800;font-size:16px;flex-shrink:0">03</span>
+              <div style="font-size:14px;color:var(--text2);line-height:1.6"><strong>$720K in sales taught me business.</strong> I build what generates revenue, not what looks cool on a spec sheet.</div>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start">
+              <span style="color:var(--blue);font-weight:800;font-size:16px;flex-shrink:0">04</span>
+              <div style="font-size:14px;color:var(--text2);line-height:1.6"><strong>Zero-cost architecture.</strong> I optimize for maximum value at minimum cost. Your infra doesn't need to be expensive to be powerful.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= WHAT YOU GET ========================= -->
+<section style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <div class="section-label">🎁 What You Get</div>
+    <h2 class="section-title">Not just code — a complete system.</h2>
+    <p class="section-sub" style="margin-bottom:40px">Every project includes documentation, error handling, monitoring, and a handover that ensures you're never dependent on me.</p>
+
+    <div class="grid-4">
+      <div class="card card-sm" style="text-align:center">
+        <div style="font-size:32px;margin-bottom:12px">📦</div>
+        <div style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:4px">Production-Ready</div>
+        <div style="font-size:12px;color:var(--text3);line-height:1.5">Tested, documented, deployed. Not a prototype — a system that runs.</div>
+      </div>
+      <div class="card card-sm" style="text-align:center">
+        <div style="font-size:32px;margin-bottom:12px">🛡</div>
+        <div style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:4px">Error Recovery</div>
+        <div style="font-size:12px;color:var(--text3);line-height:1.5">Built-in fallbacks, retry logic, and monitoring alerts. Your system self-heals.</div>
+      </div>
+      <div class="card card-sm" style="text-align:center">
+        <div style="font-size:32px;margin-bottom:12px">📚</div>
+        <div style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:4px">Full Documentation</div>
+        <div style="font-size:12px;color:var(--text3);line-height:1.5">Architecture diagrams, step-by-step guides, and customization instructions.</div>
+      </div>
+      <div class="card card-sm" style="text-align:center">
+        <div style="font-size:32px;margin-bottom:12px">🔑</div>
+        <div style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:4px">100% Ownership</div>
+        <div style="font-size:12px;color:var(--text3);line-height:1.5">Full source code, Git repo, all credentials. IP is 100% yours.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= CTA ========================= -->
+<section id="contact">
+  <div class="container">
+    <div class="cta-section">
+      <div class="cta-title">Ready to build something that runs 24/7?</div>
+      <div class="cta-sub">Whether it's a simple n8n workflow or a complete AI-powered system — I ship fast, I ship solid, and I ship systems that scale.</div>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1">
+        <a href="https://www.upwork.com/freelancers/augustin" class="btn-white">Hire Me on Upwork →</a>
+      </div>
+      <div style="margin-top:24px;display:flex;gap:32px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1">
+        <div style="text-align:center">
+          <div style="font-size:24px;font-weight:900;color:#fff">< 24h</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.8px">Response Time</div>
+        </div>
+        <div style="text-align:center">
+          <div style="font-size:24px;font-weight:900;color:#fff">100%</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.8px">Completion Rate</div>
+        </div>
+        <div style="text-align:center">
+          <div style="font-size:24px;font-weight:900;color:#fff">4+</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.8px">Systems in Production</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= FOOTER ========================= -->
+<footer>
+  <div class="container">
+    <p style="margin-bottom:8px">
+      <strong style="color:var(--text)">Augustin</strong> — AI Systems Architect & Automation Expert
+    </p>
+    <p>115 agents. 2 buildings. 350k+ lines of code. Systems that run while you sleep.</p>
+    <p style="margin-top:12px;font-size:11px;color:var(--text4)">Built with Cooper Building (65 agents) & Morpheus Building (50 agents) working in parallel.</p>
+  </div>
+</footer>
+
+<!-- ========================= SCROLL ANIMATIONS ========================= -->
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      e.preventDefault();
+      const t=document.querySelector(a.getAttribute('href'));
+      if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  });
+
+  // Fade-in on scroll
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+  },{threshold:.1});
+  document.querySelectorAll('.card,.case,.wf-diagram,.excalidraw-box,.testimonial,.stat-card,.cta-section').forEach(el=>{
+    el.classList.add('fade-in');
+    obs.observe(el);
+  });
+
+  // Animate skill bars on scroll
+  const skillObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.querySelectorAll('.skill-fill').forEach(bar=>{
+          const w=bar.style.width;
+          bar.style.width='0';
+          setTimeout(()=>bar.style.width=w,100);
+        });
+        skillObs.unobserve(e.target);
+      }
+    });
+  },{threshold:.3});
+  document.querySelectorAll('.skill-table').forEach(t=>skillObs.observe(t));
+
+  // Animate stat numbers
+  const numObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const num=e.target.querySelector('.stat-num');
+        if(num&&!num.dataset.done){
+          num.dataset.done='1';
+          const txt=num.textContent;
+          num.style.opacity='0';
+          setTimeout(()=>{num.style.transition='opacity .4s';num.style.opacity='1'},200);
+        }
+        numObs.unobserve(e.target);
+      }
+    });
+  },{threshold:.5});
+  document.querySelectorAll('.stat-card').forEach(c=>numObs.observe(c));
+});
+</script>
+
+</body>
+</html>
